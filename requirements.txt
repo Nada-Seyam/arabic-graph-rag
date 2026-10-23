@@ -1,0 +1,45 @@
+# =============================================================================
+# Arabic Graph RAG — Python dependencies
+#
+# Notes:
+# - No PyTorch/CUDA is required. Embeddings and reranking run on ONNX Runtime
+#   via `fastembed`, keeping the local footprint small and CPU-friendly.
+# - All LLM inference goes through Ollama Cloud (see src/llm/ollama_client.py)
+#   via plain HTTP (`requests`) — no `ollama` Python package is required.
+# =============================================================================
+
+# --- Configuration -----------------------------------------------------------
+python-dotenv>=1.0,<2.0
+
+# --- PDF ingestion -------------------------------------------------------------
+pdfplumber>=0.11,<1.0
+pymupdf>=1.24,<2.0
+
+# --- Optional OCR fallback for scanned PDF pages (safe to omit; extractor
+#     degrades gracefully without them) --------------------------------------
+pytesseract>=0.3.10,<1.0
+pdf2image>=1.17,<2.0
+
+# --- Embeddings and reranking APIs --------------------------------------------
+huggingface_hub>=0.30,<1.0
+
+# --- Optional local embedding fallback ----------------------------------------
+fastembed>=0.3,<1.0
+
+# --- Vector store --------------------------------------------------------------
+chromadb>=0.5,<2.0
+
+# --- Keyword retrieval -----------------------------------------------------
+rank-bm25>=0.2,<1.0
+
+# --- Knowledge graph -----------------------------------------------------------
+networkx>=3.2,<4.0
+
+# --- HTTP client for Ollama Cloud -------------------------------------------
+requests>=2.31,<3.0
+
+# --- Numerics ------------------------------------------------------------------
+numpy>=1.26,<3.0
+
+# --- Testing -------------------------------------------------------------------
+pytest>=7.4,<9.0
